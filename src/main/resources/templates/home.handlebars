@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/foundation.min.css">
+    <title>Home page</title>
+</head>
+<body>
+<div class="grid-container">
+
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1 id="heading">Greet Application</h1>
+        </div>
+      </div>
+
+            <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+
+      <form action="/greet" method="POST">
+  <div class="sign-in-form">
+    <h4 class="text-center">{{greetname}}</h4>
+    <label for="sign-in-form-username">Name</label>
+    <input type="text" class="sign-in-form-username" id="sign-in-form-username" name ="username" required>
+
+    <button type="submit" class="sign-in-form-button">Greet</button>
+  </div>
+</form>
+
+        </div>
+      </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/vendor/foundation.min.js"></script>
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+</body>
+</html>
