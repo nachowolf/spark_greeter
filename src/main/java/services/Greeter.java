@@ -3,7 +3,9 @@ package services;
 public class Greeter {
 
     enum Language{
-        ENGLISH("Hello");
+        ENGLISH("Hello"),
+        AFRIKAANS("Hallo"),
+        JAPANESE("Konichiwa");
 
         private String greeting;
 
@@ -16,9 +18,10 @@ public class Greeter {
         }
     }
 
-    public String greet(String name){
-        return String.format("%s, %s", Language.ENGLISH.getGreeting(), name);
+    public String greet(Extractor extract){
+        return String.format("%s, %s", Language.valueOf(extract.getLanguage()).getGreeting(), extract.getName());
     }
+
 
 
 }

@@ -25,6 +25,32 @@
     <label for="sign-in-form-username">Name</label>
     <input type="text" class="sign-in-form-username" id="sign-in-form-username" name ="username" required>
 
+    <div class="polls">
+  <h5 class="polls-question">
+    <span class="polls-question-label"></span>
+    Select a language.
+  </h5>
+  <div class="polls-options grid-x grid-padding-x">
+
+    <div class="large-4 medium-4 cell">
+      <input type="radio" name="language" value="ENGLISH" id="languageEnglish" required>
+      <label for="languageEnglish">English</label>
+    </div>
+
+    <div class="large-4 medium-4 cell">
+      <input type="radio" name="language" value="AFRIKAANS" id="languagefrikaans" required>
+      <label for="languageAfrikaans">Afrikaans</label>
+    </div>
+
+    <div class="large-4 medium-4 cell">
+      <input type="radio" name="language" value="JAPANESE" id="languageJapanese" required>
+      <label for="languageJapanese">Japanese</label>
+    </div>
+
+  </div>
+</div>
+
+
     <button type="submit" class="sign-in-form-button">Greet</button>
   </div>
 </form>

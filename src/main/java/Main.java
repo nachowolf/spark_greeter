@@ -1,5 +1,5 @@
 import services.Greeter;
-import services.NameExtractor;
+import services.Extractor;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -9,7 +9,17 @@ import java.util.Map;
 import static spark.Spark.*;
 
 public class Main {
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
+
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
          staticFiles.location("/public");
 
 //        path("/route", () -> {
@@ -26,6 +36,8 @@ public class Main {
 //            });
 //        });
 
+
+
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new HandlebarsTemplateEngine().render(
@@ -33,10 +45,10 @@ public class Main {
         });
 
         post("/greet", (req, res) -> {
-            NameExtractor nameExtractor = new NameExtractor(req.body());
+            Extractor extractor = new Extractor(req.body());
             Greeter greeter = new Greeter();
             Map<String, Object> model = new HashMap<>();
-            model.put("greetname", greeter.greet(nameExtractor.getName()));
+            model.put("greetname", greeter.greet(extractor));
             return new HandlebarsTemplateEngine().render(new ModelAndView(model, "home.handlebars"));
         });
 
