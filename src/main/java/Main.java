@@ -24,7 +24,7 @@ public class Main {
         port(getHerokuAssignedPort());
          staticFiles.location("/public");
          AtomicReference<String> greet = new AtomicReference<>("");
-         new GreetDatabase().clear();
+//         new GreetDatabase().clear();
 
 //        path("/route", () -> {
 ////            before("/*", (q, a) -> log.info("Received route call"));
