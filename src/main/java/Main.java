@@ -48,8 +48,8 @@ public class Main {
             Map<String, Integer> users = gdb.getUsers();
             model.put("greetname", greet.toString());
             model.put("userlist", users);
-            model.put("totalusers", gdb.getTotalGreets());
-            model.put("totalgreets", gdb.getTotalUsers());
+            model.put("totalgreets", gdb.getTotalGreets());
+            model.put("totalusers", gdb.getTotalUsers());
             return new HandlebarsTemplateEngine().render(
                     new ModelAndView(model, "home.handlebars"));
         });
