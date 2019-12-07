@@ -10,7 +10,7 @@ public class GreetDatabase {
 //    private final String user = "coder";
 //    private final String pw = "coder";
 
-    private final String host = "jdbc:postgresql://ec2-50-19-95-77.compute-1.amazonaws.com/Greets";
+    private final String host = "jdbc:postgresql://ec2-50-19-95-77.compute-1.amazonaws.com/greeted";
     private final String user = "fhdhlahsbgzmgb";
     private final String pw = "138c8ba19e9280fca7c5a0a55d319f2a9a1675e8f7cac4e0df50735d063d5777";
 
