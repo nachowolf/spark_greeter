@@ -1,5 +1,5 @@
 CREATE TABLE public.greeted (
 	id serial NOT NULL,
-	firstname varchar NOT NULL,
-	greets int NOT NULL
+	username varchar NOT NULL,
+	greet_count int4 NOT NULL
 );

@@ -55,6 +55,41 @@
   </div>
 </form>
 
+<div class="grid-x grid-padding-x align-justify sub">
+ <div class="sign-in-form large-5 medium-5cell">
+  <table class="responsive-card-table unstriped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Greets</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each userlist}}
+    <tr>
+      <td data-label="First Name">{{@key}}</td>
+      <td data-label="Last Name">{{this}}</td>
+       <td ><a href="/delete/{{@key}}" id="delete">Delete</a></td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+ </div>
+
+  <div class="sign-in-form large-5 medium-5 cell">
+   <ul class="stats-list">
+  <li>
+    {{totalgreets}} <span class="stats-list-label">Total Greets</span>
+  </li>
+  <li>
+    {{totalusers}} <span class="stats-list-label">Total Users</span>
+  </li>
+</ul>
+ </div>
+ </div>
+
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 
 The following files have been resolved:
    com.github.jknack:handlebars-guava-cache:jar:4.0.6:compile
+   org.postgresql:postgresql:jar:42.2.8:compile
    org.eclipse.jetty:jetty-webapp:jar:9.4.12.v20180830:compile
    org.slf4j:slf4j-simple:jar:1.7.21:compile
    org.eclipse.jetty.websocket:websocket-server:jar:9.4.12.v20180830:compile
