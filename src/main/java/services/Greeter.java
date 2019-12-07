@@ -9,7 +9,7 @@ public class Greeter {
 
         private String greeting;
 
-        private Language(String greeting){
+        Language(String greeting){
             this.greeting = greeting;
         }
 
@@ -19,7 +19,18 @@ public class Greeter {
     }
 
     public String greet(Extractor extract){
-        return String.format("%s, %s", Language.valueOf(extract.getLanguage()).getGreeting(), extract.getName());
+       if(extract != null){
+           GreetDatabase db = new GreetDatabase();
+
+           if(!db.exists(extract.getName())){
+               db.addUser(extract.getName());
+           }
+
+           db.incrementGreets(extract.getName());
+
+           return String.format("%s, %s", Language.valueOf(extract.getLanguage()).getGreeting(), extract.getName());
+       }
+       return "";
     }
 
 
