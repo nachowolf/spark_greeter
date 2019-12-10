@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static services.DatabaseConnectionType.*;
 import static spark.Spark.*;
 
 public class Main {
@@ -15,8 +16,11 @@ public class Main {
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
+            GreetDatabase.setDatabaseConnectionType(HEROKU);
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
+
+        GreetDatabase.setDatabaseConnectionType(LOCAL);
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 
@@ -24,6 +28,7 @@ public class Main {
         port(getHerokuAssignedPort());
          staticFiles.location("/public");
          AtomicReference<String> greet = new AtomicReference<>("");
+        System.out.println("started on port: " + getHerokuAssignedPort());
 //         new GreetDatabase().clear();
 
 //        path("/route", () -> {
@@ -41,6 +46,13 @@ public class Main {
 //        });
 
 
+        get("/reset", (req, res) -> {
+            new GreetDatabase().clear();
+            greet.set("");
+            res.redirect("/");
+            return "";
+        });
+
 
         get("/", (req, res) -> {
             GreetDatabase gdb = new GreetDatabase();
@@ -50,9 +62,12 @@ public class Main {
             model.put("userlist", users);
             model.put("totalgreets", gdb.getTotalGreets());
             model.put("totalusers", gdb.getTotalUsers());
+            greet.set("");
             return new HandlebarsTemplateEngine().render(
                     new ModelAndView(model, "home.handlebars"));
         });
+
+      
 
 //        post("/greet", (req, res) -> {
 //            GreetDatabase gdb = new GreetDatabase();
@@ -84,9 +99,11 @@ public class Main {
         });
 
         get("*", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
             if(!req.pathInfo().startsWith("/static")){
                 res.status(404);
-                return "404 page not found";
+                return new HandlebarsTemplateEngine().render(
+                        new ModelAndView(model, "404.handlebars"));
             }
             return null;
         });

@@ -12,7 +12,7 @@ public class Extractor {
     }
 
     private void extract(){
-        this.name = input.split("&")[0].split("=")[1];
+        this.name = input.split("&")[0].split("=")[1].toLowerCase();
         this.langauge = input.split("&")[1].split("=")[1];
     }
 
